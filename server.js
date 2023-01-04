@@ -141,7 +141,6 @@ app.post('/merge_image_and_audio',ensureToken,(req,res)=>{
     });
 });
 
-//recheck
 app.post('/merge_all_video',ensureToken,(req,res)=>{
     const file= req.files.video_file_path_list;
     // console.log(file[0]);
