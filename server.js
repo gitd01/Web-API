@@ -53,7 +53,7 @@ function ensureToken(req,res,next){
     }
 }
 
-app.post('/upload_file', ensureToken ,(req,res)=>{
+app.post('/upload_file' ,(req,res)=>{
             console.log(req.files);
             const file = req.files.my_file;
             file.mv(`${__dirname}/public/upload/${file.name}`,(err,result)=>{
