@@ -163,12 +163,6 @@ app.post('/merge_all_video',ensureToken,(req,res)=>{
     });
 });
 
-app.get('/merge_video_and_audio', ensureToken,(req,res)=>{
-    res.json({
-        text:'task'
-    });
-});
-
 app.get('/download_file',(req,res)=>{
     const file_path = `${__dirname}/public/upload/d.png`;
     res.download(
