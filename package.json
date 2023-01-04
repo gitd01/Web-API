@@ -1,0 +1,36 @@
+{
+  "name": "nodejsapi",
+  "version": "1.0.0",
+  "description": "NodeJs REST API for uploading files",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Divyanshi Gupta",
+  "license": "ISC",
+  "dependencies": {
+    "@google-cloud/text-to-speech": "^4.1.0",
+    "@supercharge/fs": "^3.4.0",
+    "axios": "^1.2.2",
+    "body-parser": "^1.20.1",
+    "child_process": "^1.0.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "express-fileupload": "^1.4.0",
+    "express-zip": "^3.0.0",
+    "ffmpeg": "^0.0.4",
+    "fluent-ffmpeg": "^2.1.2",
+    "fs": "^0.0.1-security",
+    "gtts": "^0.2.1",
+    "https": "^1.0.0",
+    "jsonwebtoken": "^9.0.0",
+    "mime": "^3.0.0",
+    "multer": "^1.4.5-lts.1",
+    "path": "^0.12.7",
+    "say": "^0.16.0",
+    "text-to-mp3": "^1.0.4",
+    "videoshow": "^0.1.12",
+    "which": "^3.0.0"
+  }
+}
