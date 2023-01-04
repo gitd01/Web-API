@@ -36,6 +36,7 @@ app.post('/create_new_storage',(req,res)=>{
     res.json({
         token:token
     });
+    console.log(token);
 });
 
 function ensureToken(req,res,next){
