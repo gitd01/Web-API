@@ -56,7 +56,7 @@ function ensureToken(req,res,next){
 app.post('/upload_file', ensureToken ,(req,res)=>{
             console.log(req.files);
             const file = req.files.my_file;
-            file.mv(`public/upload/${file.name}`,(err,result)=>{
+            file.mv(`${__dirname}/public/upload/${file.name}`,(err,result)=>{
                 if(err){
                     throw err;
                 }
