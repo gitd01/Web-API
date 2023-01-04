@@ -24,7 +24,7 @@ app.use(express.json());
 ffmpeg.setFlvtoolPath("C:/flvtool");
 // console.log(ffmpeg);
 
-app.post('/',(req,res,next)=>{
+app.get('/',(req,res,next)=>{
     res.status(200).send("Hey! This is REST API which is used to upload files, to convert text to audio, to merge audio, video and image and to download any files from server using JWT token.")
 })
 
