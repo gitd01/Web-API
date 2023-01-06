@@ -13,11 +13,15 @@ var axios = require('axios');
 // const { resolve } = require('path');
 // const { rejects } = require('assert');
 var mime = require('mime');
+const bodyparser = require('body-parser');
 
-const app = express();
+const app = express(path.join(__dirname+'public/upload'));
 app.use(fileupload());
-app.use(express.json());
-// const upload = multer();
+// app.use(express.json());
+const upload = multer({storage:storage});
+app.use(express.static());
+app.use(bodyparser.urlencoded({extended:false}));
+app.use(bodyparser.json());
 
 // ffmpeg.setFfmpegPath("C:/ffmpeg/ffmpeg.exe");
 // ffmpeg.setFfprobePath("C:/ffmpeg");
@@ -162,6 +166,23 @@ app.post('/merge_all_video',ensureToken,(req,res)=>{
         video_file_path: "public/upload/"+Fs.filename(`${file[0].name}`)+`8.mp4`
     });
 });
+
+var storage = multer.diskStorage({
+    destination: (req,res,cb)=>{
+        cb(null, 'public/upload');
+    },
+    filename:(req,res,cb)=>{
+        cb(null,Date.now()+path.extname(file.originalname));
+    },
+})
+
+app.post('/merge_video_and_audio',(req,res)=>{
+    return res.json({
+        status: "ok",
+        message: "Video and Audio Merged Successfully",
+        video_file_path: "public/upload/"    
+    })
+})
 
 app.get('/download_file',(req,res)=>{
     const file_path = `${__dirname}/public/upload/d.png`;
