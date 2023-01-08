@@ -13,15 +13,15 @@ var axios = require('axios');
 // const { resolve } = require('path');
 // const { rejects } = require('assert');
 var mime = require('mime');
-const bodyparser = require('body-parser');
+var bodyparser = require('body-parser');
 
 const app = express(path.join(__dirname+'public/upload'));
 app.use(fileupload());
 // app.use(express.json());
-const upload = multer({storage:storage});
-app.use(express.static());
+app.use(express.static(__dirname+'public/upload'));
 app.use(bodyparser.urlencoded({extended:false}));
 app.use(bodyparser.json());
+const upload =  multer({storage:storage});
 
 // ffmpeg.setFfmpegPath("C:/ffmpeg/ffmpeg.exe");
 // ffmpeg.setFfprobePath("C:/ffmpeg");
@@ -177,6 +177,16 @@ var storage = multer.diskStorage({
 })
 
 app.post('/merge_video_and_audio',(req,res)=>{
+    const uploadMultiple =  upload.fields([
+        {name: `${req.files.video_file_path}`},
+        {name: `${req.files.audio_file_path}`},
+    ])
+    uploadMultiple(req,res,err=>{
+        if(err){console.log(err);}
+        else{
+            console.log(req.files);
+        }
+    })
     return res.json({
         status: "ok",
         message: "Video and Audio Merged Successfully",
